@@ -39,4 +39,4 @@ function validateCollections(collections){
 }
 
 exports.Collections = Collections
-exports.validateCollections = validateCollections
+exports.validate = validateCollections

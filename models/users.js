@@ -40,4 +40,4 @@ function validateUser(user){
 }
 
 exports.User = User
-exports.validateUser = validateUser
+exports.validate = validateUser

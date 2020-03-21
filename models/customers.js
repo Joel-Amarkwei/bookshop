@@ -30,4 +30,4 @@ function validateCustomer(customer){
 }
 
 exports.Customers = Customers
-exports.validateCustomer = validateCustomer
+exports.validate = validateCustomer
