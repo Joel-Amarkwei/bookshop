@@ -39,5 +39,5 @@ function validateUser(user){
     return Joi.validate(user, schema)
 }
 
-module.exports = User
-module.exports = validateUser
+exports.User = User
+exports.validateUser = validateUser

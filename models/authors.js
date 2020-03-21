@@ -19,8 +19,14 @@ const authorSchema = new mongoose.Schema({
         required: false,
         minlength: 10, 
         maxlength: 255 
-     }
+     },
+     available: {
+         type : Boolean,
+        required: false
+        }
 })
+
+const Author = mongoose.model('Author', authorSchema)
 
 function validateAuthor(author){
     const schema = {
@@ -31,5 +37,6 @@ function validateAuthor(author){
     return Joi.validate(author, schema)
 }
 
-module.exports = authorSchema
-module.exports = validateAuthor
+exports.Author = Author
+exports.authorSchema = authorSchema
+exports.validate = validateAuthor

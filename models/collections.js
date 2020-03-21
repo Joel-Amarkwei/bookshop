@@ -38,5 +38,5 @@ function validateCollections(collections){
     return Joi.validate(collections, schema)
 }
 
-module.exports = Collections
-module.exports = validateCollections
+exports.Collections = Collections
+exports.validateCollections = validateCollections
