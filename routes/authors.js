@@ -3,12 +3,12 @@ const { Author, validate } = require('../models/authors')
 const express = require('express')
 const router = express.Router()
 
-router.get( ('/'), async (req, res) => {
+router.get('/', async (req, res) => {
     const authors = await Author.find().sort('name')
     res.send(authors)
 })
 
-router.post( ('/'), async (req, res) => {
+router.post('/', async (req, res) => {
     const { error } = validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
@@ -17,7 +17,7 @@ router.post( ('/'), async (req, res) => {
     res.send(author)
 })
 
-router.put( ('/:id'), async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { error } = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
 
@@ -32,14 +32,14 @@ router.put( ('/:id'), async (req, res) => {
     res.send(author)
 })
 
-router.delete( ('/:id'), async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const author = await Author.findByIdAndRemove(req.name.id)
 
     if (!author) return res.status(400).send('The Author with the given ID was not found.')
     res.send(author)
 })
 
-router.get( ('/:id'), async (req, res) => {
+router.get('/:id', async (req, res) => {
     const author = await Author.findById(req.params.id)
     
     if (!author) return res.status(400).send('The Author with the given ID was not found.')

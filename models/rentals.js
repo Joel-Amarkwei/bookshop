@@ -23,7 +23,7 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
         }),
         required: true
     },
-    collection: {
+    collect: {
         type: new mongoose.Schema({
             title: {
                 type: String,

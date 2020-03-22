@@ -28,14 +28,14 @@ const Collection = mongoose.model('Collections', new mongoose.Schema({
     }
 }))
 
-function validateCollection(collections){
+function validateCollection(collection){
     const schema = {
         title: Joi.string().min(5).max(255).required(),
         authorId: Joi.objectId().required(),
         dailyRentals: Joi.number().min(0).max(200).required(),
         InStock: Joi.number().min(0).max(255).required()
     }
-    return Joi.validate(collections, schema)
+    return Joi.validate(collection, schema)
 }
 
 exports.Collection = Collection

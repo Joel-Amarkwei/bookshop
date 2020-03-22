@@ -7,14 +7,13 @@ const express = require('express')
 const router = express.Router()
 
 Fawn.init(mongoose)
-const task = new Fawn.task()
 
-router.get( ('/'), async (req, res) => {
+router.get('/', async (req, res) => {
     const rental = await Rental.find().sort('-dateOut')
     res.send(rental)
 })
 
-router.post( ('/'), async (req, res) => {
+router.post('/', async (req, res) => {
     const { error } = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
 
@@ -41,7 +40,7 @@ router.post( ('/'), async (req, res) => {
         }
     })
     try{
-        task()
+        new Fawn.Task()
         .save('rentals', rental)
         .update('collection', { _id: collection.id }, { $inc: { InStock: - 1 } })
     } catch(ex){
