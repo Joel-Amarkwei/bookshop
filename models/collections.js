@@ -2,7 +2,7 @@ const Joi = require('joi')
 const mongoose = require('mongoose')
 const { authorSchema } = require('./authors')
 
-const Collections = mongoose.model('Collections', new mongoose.Schema({
+const Collection = mongoose.model('Collections', new mongoose.Schema({
     title: {
         type: String,
         trim: true,
@@ -28,7 +28,7 @@ const Collections = mongoose.model('Collections', new mongoose.Schema({
     }
 }))
 
-function validateCollections(collections){
+function validateCollection(collections){
     const schema = {
         title: Joi.string().min(5).max(255).required(),
         authorId: Joi.objectId().required(),
@@ -38,5 +38,5 @@ function validateCollections(collections){
     return Joi.validate(collections, schema)
 }
 
-exports.Collections = Collections
-exports.validate = validateCollections
+exports.Collection = Collection
+exports.validate = validateCollection

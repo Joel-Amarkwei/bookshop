@@ -1,6 +1,5 @@
 const _ = require('lodash')
 const { Author, validate } = require('../models/authors')
-const mongoose = require('mongoose')
 const express = require('express')
 const router = express.Router()
 
@@ -41,7 +40,7 @@ router.delete( ('/:id'), async (req, res) => {
 })
 
 router.get( ('/:id'), async (req, res) => {
-    const author = await Author.findById(req.body.id)
+    const author = await Author.findById(req.params.id)
     
     if (!author) return res.status(400).send('The Author with the given ID was not found.')
     res.send(author)

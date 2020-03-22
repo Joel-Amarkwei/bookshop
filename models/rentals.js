@@ -49,7 +49,7 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
     },
     dateOut: {
         type: Date,
-        required: true,
+        // required: true,
         default: Date.now()
     },
     dateReturn: {
@@ -65,7 +65,7 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
 function validateRental(rental){
     const schema = {
         customerId: Joi.objectId().required(),
-        movieId: Joi.objectId().required()
+        collectionId: Joi.objectId().required()
     }
     return Joi.validate(rental, schema)
 }
