@@ -1,5 +1,7 @@
 const _ = require('lodash')
 const { Author, validate } = require('../models/authors')
+const admin = require('../middlewares/admin')
+const auth = require('../middlewares/auth')
 const express = require('express')
 const router = express.Router()
 
@@ -17,7 +19,7 @@ router.post('/', async (req, res) => {
     res.send(author)
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     const { error } = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
 
@@ -33,7 +35,7 @@ router.put('/:id', async (req, res) => {
     res.send(author)
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [auth, admin], async (req, res) => {
     const author = await Author.findByIdAndRemove(req.params.id)
 
     if (!author) return res.status(400).send('The Author with the given ID was not found.')
