@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     const author = await Author.findById(req.body.authorId)
     if (!author) return res.status(400).send('Author not found.')
     
-    const collection = new Collection({
+    let collection = new Collection({
         title: req.body.title,
         author: {
             _id: author.id,
@@ -37,7 +37,7 @@ router.put('/:id', async (req, res) => {
     const author = await Author.findById(req.body.authorId)
     if (!author) return res.status(400).send('Author not found.')
 
-    const collection = new Collection.findByIdAndUpdate(req.body.id, {
+    const collection = await Collection.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
         author: {
             _id: author.id,
@@ -55,10 +55,10 @@ router.put('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-    const collection = await Collection.findByIdAndRemove(req.body.id)
+    const collection = await Collection.findByIdAndRemove(req.params.id)
 
     if (!collection) res.status(400).send('The collection with the given id was not found.')
-
+    
     res.send(collection)
 })
 

@@ -32,7 +32,8 @@ function validateAuthor(author){
     const schema = {
         name: Joi.string().min(5).max(255).required(),
         phone: Joi.string().min(5).max(128).required(),
-        website: Joi.string().min(10).max(255)
+        website: Joi.string().min(10).max(255),
+        available: Joi.boolean()
     }
     return Joi.validate(author, schema)
 }

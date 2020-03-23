@@ -18,7 +18,7 @@ const Collection = mongoose.model('Collections', new mongoose.Schema({
         type: Number,
         required: true,
         minlength: 0,
-        maxlength: 255
+        maxlength: 500
     },
     dailyRentals: {
         type: Number,
@@ -33,7 +33,7 @@ function validateCollection(collection){
         title: Joi.string().min(5).max(255).required(),
         authorId: Joi.objectId().required(),
         dailyRentals: Joi.number().min(0).max(200).required(),
-        InStock: Joi.number().min(0).max(255).required()
+        InStock: Joi.number().min(0).max(500).required()
     }
     return Joi.validate(collection, schema)
 }

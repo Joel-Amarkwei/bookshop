@@ -49,7 +49,7 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
     },
     dateOut: {
         type: Date,
-        // required: true,
+        required: true,
         default: Date.now()
     },
     dateReturn: {
@@ -58,7 +58,7 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
     },
     rentFee: {
         type: Number,
-        required: true
+        min: 0
     }
 }))
 

@@ -23,7 +23,7 @@ const Customer = mongoose.model('Customer', new mongoose.Schema({
 function validateCustomer(customer){
     const schema = {
         name: Joi.string().min(5).max(255).required(),
-        phone: Joi.string().min(8).max().required(100),
+        phone: Joi.string().min(8).max(100).required(100),
         isGold: Joi.boolean()
     }
     return Joi.validate(customer, schema)
