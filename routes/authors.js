@@ -2,7 +2,8 @@ const _ = require('lodash')
 const { Author, validate } = require('../models/authors')
 const admin = require('../middlewares/admin')
 const auth = require('../middlewares/auth')
-const express = require('express')
+import express from 'express'
+//const express = require('express')
 const router = express.Router()
 
 router.get('/', async (req, res) => {

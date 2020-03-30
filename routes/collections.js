@@ -1,6 +1,7 @@
 const { Author } = require('../models/authors')
 const { Collection, validate } = require('../models/collections')
-const express = require('express')
+import express from 'express'
+//const express = require('express')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
