@@ -2,8 +2,7 @@ const _ = require('lodash')
 const bcrypt = require('bcrypt')
 const Joi = require('joi')
 const { User } = require('../models/users')
-import express from 'express'
-//const express = require('express')
+const express = require('express')
 const router = express.Router()
 
 router.post('/', async (req, res) => {

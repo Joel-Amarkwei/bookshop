@@ -1,3 +1,4 @@
 {
-    "privateToken": "1234"
+    "privateToken": "1234",
+    "db": "mongodb://localhost/Bookshop_tests"
 }

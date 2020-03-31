@@ -3,8 +3,7 @@ const { Customer } = require('../models/customers')
 const { Collection } = require('../models/collections')
 const Fawn = require('fawn')
 const mongoose = require('mongoose')
-import express from 'express';
-//const express = require('express')
+const express = require('express')
 const router = express.Router()
 
 Fawn.init(mongoose)

@@ -1,8 +1,7 @@
 const _ = require('lodash')
 const { Customer, validate } = require('../models/customers')
 const express = require('express')
-import express from 'express'
-//const router = express.Router()
+const router = express.Router()
 
 router.get('/', async (req, res) => {
     const customer = await Customer.find().sort('name')
