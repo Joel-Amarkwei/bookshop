@@ -2,4 +2,3 @@
     "privateToken": "",
     "db": "mongodb://localhost/Bookshop"
 }
-

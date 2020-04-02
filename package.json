@@ -22,5 +22,8 @@
     "mongoose": "^5.0.2",
     "winston": "^3.2.1",
     "winston-mongodb": "^3.0.0"
+  },
+  "devDependencies": {
+    "supertest": "^4.0.2"
   }
 }
