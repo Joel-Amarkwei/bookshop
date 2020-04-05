@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const { Author, validate } = require('../models/authors')
+const validateObjectID = require('../middlewares/objectID')
 const admin = require('../middlewares/admin')
 const auth = require('../middlewares/auth')
 const express = require('express')
@@ -35,14 +36,14 @@ router.put('/:id', auth, async (req, res) => {
     res.send(author)
 })
 
-router.delete('/:id', [auth, admin], async (req, res) => {
+router.delete('/:id', validateObjectID, [auth, admin], async (req, res) => {
     const author = await Author.findByIdAndRemove(req.params.id)
 
     if (!author) return res.status(400).send('The Author with the given ID was not found.')
     res.send(author)
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateObjectID, async (req, res) => {
     const author = await Author.findById(req.params.id)
     
     if (!author) return res.status(400).send('The Author with the given ID was not found.')
