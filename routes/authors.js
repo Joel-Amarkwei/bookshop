@@ -11,12 +11,13 @@ router.get('/', async (req, res) => {
     res.send(authors)
 })
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
     
     let author = new Author( _.pick(req.body, ['name', 'website', 'phone', 'available']))
     author = await author.save()
+
     res.send(author)
 })
 
