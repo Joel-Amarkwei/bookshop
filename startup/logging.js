@@ -11,7 +11,7 @@ module.exports = function(){
         process.on('unhandledRejection', (ex) => {
             throw ex
         }),
-        
+
         winston.add(winston.transports.File, { filename: 'logger.log' }),
         winston.add(winston.transports.MongoDB, { db: 'mongodb://localhost/Bookshop', level: 'info' })
     )

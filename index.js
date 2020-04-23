@@ -8,7 +8,7 @@ require('./startup/validation')()
 require('./startup/routes')(app)
 require('./startup/logging')
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 5000
 const Server = app.listen(port, () => winston.info(`Listening at port: ${port}...`) )
 
 module.exports = Server
