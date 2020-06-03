@@ -1,3 +1,5 @@
+//Things to take note before executing these tests can be found at the very buttom of this file, rsvp.
+
 const request = require('supertest')
 const mongoose = require('mongoose')
 const _ = require('lodash')
@@ -36,7 +38,7 @@ describe('/api/authors', async () => {
     })
 
     describe('/:id', () => {
-
+    //yeah so as the name suggests this one is basically testing for
     it('should return a 404 status if author is not found', async () => {
         await Author.findById('5e67f37baef3a907d5a0de27')
 
@@ -45,6 +47,8 @@ describe('/api/authors', async () => {
         expect(res.status).toBe(404)
     })
 
+        //I've comment most of the content of this test because it relies on the solely on a specific kind of
+        //request with made with a user ID credential direct from the database.
     it('should return an author with the given ID', async () => {
         // let author = new Author({ name: 'Ravimax', phone: '90909900'})
         // author = author.save()
@@ -58,6 +62,7 @@ describe('/api/authors', async () => {
     })
   })
 
+    // yeah so this one follows similarly as the previous ones ie making a User's request
   describe('POST /', () => {
     it('should return a 401 if client is not logged in', async () => {
         const res = await request(server)
@@ -67,6 +72,8 @@ describe('/api/authors', async () => {
         expect(res.status).toBe(401)
     })
     
+      //here with the help of json web token I encoded some properties and and made headings out of it, this test
+      //this plays around that idea.
     it('should return a validation error if the specified validation context failed', async () => {
         const token = User().generateAuthToken()
         
@@ -103,6 +110,15 @@ describe('/api/authors', async () => {
   })
 })
 
+/* 
+Things to take note of before you can run these tests are,......
+-   After installing each of the necessary node modules you'll also to import the User and the Author property from the
+    respective folder. The links to the respective folders have been added together with this link.
+-   You'll also need the database to run the base on some fed in data, the database configuration link is also added.
+-   You'll also need need the generateAuthToken from the User model file.
+NB: There're lots of test that can be performed using this, these samples tests are just a few.
+    Questions for more clarifications are humbly welcomed.
+*/
 
 
 
