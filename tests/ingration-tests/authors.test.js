@@ -4,24 +4,32 @@ const _ = require('lodash')
 const { Author } = require('../../models/authors')
 const { User } = require('../../models/users')
 
+// creating a server
 let server;
 
+//describing some properties of the /api/authors api endpoint
 describe('/api/authors', async () => {
+    // before each importation the server is activated to handle each request individually.
     beforeEach(() => { server = require('../../index') })
+    
+    //after each importation the server is deactivated to make sure that it runs every request just once.
     afterEach( async () => { server.close()
                         await Author.remove({})
                             })
     
     it('GET /', async () => {
-        
+        //inserting a number of properties into the Author's field
         await Author.insertMany([
             { name: 'Ravimax', phone: '90909900'},
             { name: 'Nummax', phone: '887766778'},
             { name: 'Summax', phone: '112211212'}
         ])
+        //this test checks if the response status is fine
         const res = await request(server).get('/api/authors')
         expect(res.status).toBe(200)
-       // expect(res.body.length).toBe(3)
+       // expect(res.body.length).toBe(3) -> this one was just to check the the length of the content of the response
+        
+        //these two last tests if a particular property is present in the any of the field amongst the Authors database.
         expect(res.body.some((g) => g.name === 'Ravimax')).toBeTruthy()
         expect(res.body.some((a) => a.phone === '90909900')).toBeTruthy()
         
