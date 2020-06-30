@@ -9,7 +9,7 @@ let server = require('../../index');
 
 
 //describing some properties of the /api/authors api endpoint
-// describe('/api/authors',  () => {
+ describe('/api/authors',  () => {
 
     // before each importation the server is activated to handle each request individually.
     beforeEach(() => { server = require('../../index') })
@@ -37,27 +37,27 @@ let server = require('../../index');
         
     })
 
-    //describe('/:id', () => {
+    describe('/:id', () => {
     //yeah so as the name suggests this one is basically testing for
-    // it('should return a 404 status if author is not found', async () => {
-    //     await Author.findById('5efab1df9f2206e588bf1f2d')
+    test('should return a 404 status if author is not found', async () => {
+        await Author.findById('5efab1df9f2206e588bf1f2d')
 
-    //     const res = await request(server).get('/:id')
+        const res = await request(server).get('/:id')
         
-    //     expect(res.status).toBe(404)
-    // })
-    //})
+        expect(res.status).toBe(404)
+    })
+    })
     
     // yeah so this one follows similarly as the previous ones ie making a User's request
-    //describe('POST /', () => {
-    it('should return a 401 if client is not logged in', async () => {
+    describe('POST /', () => {
+    test('should return a 401 if client is not logged in', async () => {
         const res = await request(server)
         .post('/api/authors')
         .send({ name: 'Sussex', phone: '2938485843'})
 
         expect(res.status).toBe(401)
     })
-    //})
+    })
 
       //here with the help of json web token I encoded some properties and and made headings out of it, this test
       //this plays around that idea.
@@ -94,6 +94,6 @@ let server = require('../../index');
         expect(res.body).toHaveProperty('_id')
         expect(res.body).toHaveProperty('name', 'Sussex')
     })
-    //})
+    })
 
 

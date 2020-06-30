@@ -2,12 +2,12 @@ const request = require('supertest')
 const _ = require('lodash')
 const { User } = require('../../models/users')
 const express = require('express')
+const { describe } = require('joi')
 const app = express()
 
 let Server = app.listen(8000, () => '')
-
 //inserting a new users, we'll use this user's property to validate passports / login
-// it('POST /', async () => {
+// test('POST /', async () => {
 //     await User.insertMany([
 //         {email: 'joel@gmail.com', password: 'joelme1', name: 'Joelle'},
 //         {email: 'number@yahoo.com', password: 'numbersme2', name: 'Number'},
@@ -18,22 +18,21 @@ let Server = app.listen(8000, () => '')
 // })
 
 // a bad response for a bad request.
-it('POST /', async () => {
+test('POST /', async () => {
    const res = await request(Server).post('/api/login')
    expect(res.status).toBe(404)
 })
 
 //request not found, cannot perform get request on this particular endpoint
-it('GET /', async () => {
+test('GET /', async () => {
     const res = await request(Server).get('/api/login')
     expect(res.status).toBe(404)
 })
 
-it('POST /', async () => {
+test('POST /', async () => {
     const res = await request(Server)
         .post('/api/login')
         .send({ email: 'system@gmail.com' });
         
     expect(res.status).toBe(404)
 })
-
