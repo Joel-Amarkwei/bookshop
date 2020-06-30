@@ -2,10 +2,10 @@ const request = require('supertest')
 const _ = require('lodash')
 const { User } = require('../../models/users')
 const express = require('express')
-const { describe } = require('joi')
 const app = express()
 
-let Server = app.listen(8000, () => '')
+//creating a new server instead of import like we did in the last due to certain issues
+let Server = app.listen(8000, () => '') 
 //inserting a new users, we'll use this user's property to validate passports / login
 // test('POST /', async () => {
 //     await User.insertMany([
