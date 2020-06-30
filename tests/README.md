@@ -19,3 +19,7 @@ Things to do before you can run these tests,...
 
 Integration Test => login.test.js
 Things to do before you can run these tests,...
+-   Due to some complications I created a new server rather than import in the main one
+-   Create a new express app and all so you can use that one for the server variable.
+-   The rest is just model importation
+-   You can use the dummy data I used to populate your database and use it.

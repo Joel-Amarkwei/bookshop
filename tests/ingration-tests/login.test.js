@@ -6,9 +6,6 @@ const app = express()
 
 let Server = app.listen(8000, () => '')
 
-
-
-
 //inserting a new users, we'll use this user's property to validate passports / login
 // it('POST /', async () => {
 //     await User.insertMany([
