@@ -19,9 +19,6 @@ describe('tokenGenerator', () => {
     })
 })
 
-/*
-Things to do before you can run these tests,...
--   Install the following node modules -> jwt, mongoose, config
--   Require User from the users model.
--   You can other test cases and see how they work out.
-*/
+
+
+

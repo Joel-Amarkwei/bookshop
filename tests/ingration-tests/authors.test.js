@@ -1,24 +1,25 @@
 //Things to take note before executing these tests can be found at the very buttom of this file, rsvp.
 
 const request = require('supertest')
-const mongoose = require('mongoose')
 const _ = require('lodash')
 const { Author } = require('../../models/authors')
 const { User } = require('../../models/users')
+const { describe } = require('joi')
 
 // creating a server
 let server;
 
 //describing some properties of the /api/authors api endpoint
-describe('/api/authors', async () => {
+// describe('/api/authors',  () => {
+
     // before each importation the server is activated to handle each request individually.
     beforeEach(() => { server = require('../../index') })
     
-    //after each importation the server is deactivated to make sure that it runs every request just once.
+  // after each importation the server is deactivated to make sure that it runs every request just once.
     afterEach( async () => { server.close()
-                        await Author.remove({})
+                             await Author.remove({})
                             })
-                            
+                        
     it('GET /', async () => {
         //inserting a number of properties into the Author's field
         await Author.insertMany([
@@ -37,33 +38,19 @@ describe('/api/authors', async () => {
         
     })
 
-    describe('/:id', () => {
+    //describe('/:id', () => {
     //yeah so as the name suggests this one is basically testing for
     it('should return a 404 status if author is not found', async () => {
-        await Author.findById('5e67f37baef3a907d5a0de27')
+        await Author.findById('5efab1df9f2206e588bf1f2d')
 
         const res = await request(server).get('/:id')
         
         expect(res.status).toBe(404)
     })
-
-        //I've comment most of the content of this test because it relies on the solely on a specific kind of
-        //request with made with a user ID credential direct from the database.
-    it('should return an author with the given ID', async () => {
-        // let author = new Author({ name: 'Ravimax', phone: '90909900'})
-        // author = author.save()
-
-        // const res = await request(server).get('/:id')
-
-        // let results = await Author.findById(author._id)
-        
-        // expect(results.name).toBe('Ravimax')
-        // expect(results.phone).toBe('90909900')
-    })
-  })
+    //})
 
     // yeah so this one follows similarly as the previous ones ie making a User's request
-  describe('POST /', () => {
+    //describe('POST /', () => {
     it('should return a 401 if client is not logged in', async () => {
         const res = await request(server)
         .post('/api/authors')
@@ -71,7 +58,8 @@ describe('/api/authors', async () => {
 
         expect(res.status).toBe(401)
     })
-    
+    //})
+
       //here with the help of json web token I encoded some properties and and made headings out of it, this test
       //this plays around that idea.
     it('should return a validation error if the specified validation context failed', async () => {
@@ -107,18 +95,6 @@ describe('/api/authors', async () => {
         expect(res.body).toHaveProperty('_id')
         expect(res.body).toHaveProperty('name', 'Sussex')
     })
-  })
-})
-
-/* 
-Things to take note of before you can run these tests are,......
--   After installing each of the necessary node modules you'll also to import the User and the Author property from the
-    respective folder. The links to the respective folders have been added together with this link.
--   You'll also need the database to run the base on some fed in data, the database configuration link is also added.
--   You'll also need need the generateAuthToken from the User model file.
-NB: There're lots of test that can be performed using this, these samples tests are just a few.
-    Questions for more clarifications are humbly welcomed.
-*/
-
+    //})
 
 
