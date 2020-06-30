@@ -1,13 +1,12 @@
-//Things to take note before executing these tests can be found at the very buttom of this file, rsvp.
 
 const request = require('supertest')
 const _ = require('lodash')
 const { Author } = require('../../models/authors')
 const { User } = require('../../models/users')
-const { describe } = require('joi')
 
 // creating a server
-let server;
+let server = require('../../index');
+
 
 //describing some properties of the /api/authors api endpoint
 // describe('/api/authors',  () => {
@@ -30,7 +29,7 @@ let server;
         //this test checks if the response status is fine
         const res = await request(server).get('/api/authors')
         expect(res.status).toBe(200)
-       // expect(res.body.length).toBe(3) -> this one was just to check the the length of the content of the response
+        //expect(res.body.length).toBe(3) // -> this one was just to check the the length of the content of the response
         
         //these two last tests if a particular property is present in the any of the field amongst the Authors database.
         expect(res.body.some((g) => g.name === 'Ravimax')).toBeTruthy()
