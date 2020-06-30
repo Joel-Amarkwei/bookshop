@@ -39,15 +39,15 @@ let server = require('../../index');
 
     //describe('/:id', () => {
     //yeah so as the name suggests this one is basically testing for
-    it('should return a 404 status if author is not found', async () => {
-        await Author.findById('5efab1df9f2206e588bf1f2d')
+    // it('should return a 404 status if author is not found', async () => {
+    //     await Author.findById('5efab1df9f2206e588bf1f2d')
 
-        const res = await request(server).get('/:id')
+    //     const res = await request(server).get('/:id')
         
-        expect(res.status).toBe(404)
-    })
+    //     expect(res.status).toBe(404)
+    // })
     //})
-
+    
     // yeah so this one follows similarly as the previous ones ie making a User's request
     //describe('POST /', () => {
     it('should return a 401 if client is not logged in', async () => {
