@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593460961550" clover="3.2.0">
-  <project timestamp="1593460961550" name="All files">
+<coverage generated="1593517940205" clover="3.2.0">
+  <project timestamp="1593517940205" name="All files">
     <metrics statements="268" coveredstatements="163" conditionals="62" coveredconditionals="7" methods="39" coveredmethods="11" elements="369" coveredelements="181" complexity="0" loc="268" ncloc="268" packages="5" files="21" classes="21"/>
     <package name="bookshop">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -103,19 +103,19 @@
       </file>
       <file name="users.js" path="/Users/theremedy/Desktop/Practice Code/bookshop/models/users.js">
         <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
         <line num="33" count="4" type="stmt"/>
         <line num="34" count="4" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
       </file>
     </package>
     <package name="bookshop.routes">
