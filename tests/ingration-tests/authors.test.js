@@ -10,7 +10,7 @@ let server = require('../../index');
 
 //describing some properties of the /api/authors api endpoint
  describe('/api/authors',  () => {
-    jest.setTimeout(150000);
+    jest.setTimeout(10000);
     // before each importation the server is activated to handle each request individually.
     beforeEach(() => { server = require('../../index') })
     
@@ -19,8 +19,8 @@ let server = require('../../index');
                              await Author.remove({})
                             })
                         
-    test('GET /', async () => {
-        jest.setTimeout(100000)
+    it('GET /', async () => {
+        //jest.setTimeout(10000)
         //inserting a number of properties into the Author's field
         await Author.insertMany([
             { name: 'Ravimax', phone: '90909900'},
@@ -39,9 +39,9 @@ let server = require('../../index');
     })
 
     describe('/:id', () => {
-        jest.setTimeout(100000)
+       // jest.setTimeout(10000)
     //yeah so as the name suggests this one is basically testing for
-    test('should return a 404 status if author is not found', async () => {
+    it('should return a 404 status if author is not found', async () => {
         await Author.findById('5efab1df9f2206e588bf1f2d')
         const res = await request(server).get('/:id')
         expect(res.status).toBe(404)
@@ -50,8 +50,8 @@ let server = require('../../index');
     
     // yeah so this one follows similarly as the previous ones ie making a User's request
     describe('POST /', () => {
-    jest.setTimeout(100000);
-    test('should return a 401 if client is not logged in', async () => {
+        //jest.setTimeout(10000);
+    it('should return a 401 if client is not logged in', async () => {
         const res = await request(server)
         .post('/api/authors')
         .send({ name: 'Sussex', phone: '2938485843'})
@@ -63,7 +63,7 @@ let server = require('../../index');
       //here with the help of json web token I encoded some properties and and made headings out of it, this test
       //this plays around that idea.
     it('should return a validation error if the specified validation context failed', async () => {
-        jest.setTimeout(100000);
+            //jest.setTimeout(10000);
         const token = User().generateAuthToken()
         
         const res = await request(server)
@@ -75,7 +75,7 @@ let server = require('../../index');
     })
 
     it('save the author if it is valid', async () => {
-        jest.setTimeout(100000)
+            //jest.setTimeout(10000)
         const token = User().generateAuthToken()
         
         const res = await request(server)
@@ -85,9 +85,9 @@ let server = require('../../index');
 
         expect(res.status).toBe(200)
     })
-
+    
     it('save the author if it is valid', async () => {
-        jest.setTimeout(100000)
+            //jest.setTimeout(10000)
         const token = User().generateAuthToken()
         
         const res = await request(server)
