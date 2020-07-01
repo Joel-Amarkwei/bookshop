@@ -10,7 +10,7 @@ let server = require('../../index');
 
 //describing some properties of the /api/authors api endpoint
  describe('/api/authors',  () => {
-    jest.setTimeout(10000);
+   // jest.setTimeout(10000);
     // before each importation the server is activated to handle each request individually.
     beforeEach(() => { server = require('../../index') })
     
